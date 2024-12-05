@@ -13,24 +13,26 @@ namespace Vendinha
 
         public void criarCliente(Cliente cliente)
         {
-            clienteLista.Add(cliente);
+
+            try
+            {
+                clienteLista.Add(cliente);
+                Console.WriteLine("Cliente Cadastrado!!!");  
+            } catch
+            {
+                Console.WriteLine("Erro ao cadastrar");
+            }
         }
 
         public void deletarCliente(int cod)
         {
-            if(clienteLista.Remove(this.getClienteCodigo(cod)))
-            {
-                Console.WriteLine("Item removido com sucesso!!!");
-            }
-            else
-            {
-                Console.WriteLine("Item não encontrado!!!");
-            }
+            if(clienteLista.Remove(this.getCliente(cod)))
+                Console.WriteLine("Cliente removido com sucesso!!!\n");
         }
-
+         
         public void attCliente(int cod, String nome, int idade, String cpf)
         {
-            Cliente cliente = getClienteCodigo(cod);
+            Cliente cliente = getCliente(cod);
 
             if(cliente != null)
             {
@@ -47,19 +49,27 @@ namespace Vendinha
             }
         }
 
-        public Cliente getClienteCodigo(int cod)
+        public Cliente getCliente(int cod)
         {
             
             Cliente cliente = clienteLista.Find(x => x.Codigo == cod);
             if(cliente != null)
+                return cliente;
+            Console.WriteLine("Cliente não encotrado!!!");
+            return null;
+        }
+
+        public Cliente getCliente(String cpf)
+        {
+
+            Cliente cliente = clienteLista.Find(x => x.Cpf == cpf);
+            if (cliente != null)
             {
                 cliente.exibirCliente();
                 return cliente;
             }
             return null;
         }
-        
-        
 
         public void getTodos()
         {

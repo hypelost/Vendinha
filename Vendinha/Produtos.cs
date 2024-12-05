@@ -37,7 +37,7 @@ namespace Vendinha
 
         public void exibirProduto()
         {
-            Console.WriteLine($"Codigo: {Codigo}\nMarca: {Marca}\nModelo: {Modelo}\nDescricao: {Descricao}\n Preco: {Preco}");
+            Console.WriteLine($"Codigo: {Codigo}\nMarca: {Marca}\nModelo: {Modelo}\nDescricao: {Descricao}\n Preco: {Preco}\n");
         }
     }
 }

@@ -8,24 +8,24 @@ namespace Vendinha
 {
     internal class ProdutosDAO 
     {
-        List<Produtos> produtosL = new List<Produtos>() ;
+        public List<Produtos> produtosL = new List<Produtos>() ;
         public void criarProduto(Produtos produtos)
         {
             produtosL.Add(produtos);
 
         }
 
+
         public void deleteAllProdutos(List<Produtos> produtos) { produtosL.Clear(); }
         public Produtos getProdutoCodigo(int cod)
         {
             Produtos produto = produtosL.Find(x => x.Codigo == cod);
             if (produto != null)
-            {
-                produto.exibirProduto();
                 return produto;
-            }
+            Console.WriteLine("Produto não cadastrado");
             return null;
         }
+
 
         public void attProdutos(int cod, String marca, String modelo, String descricao, double preco)
         {
@@ -52,6 +52,7 @@ namespace Vendinha
             if (produtos != null)
             {
                 produtosL.Remove(produtos);
+                Console.WriteLine("Produto deletado com sucesso!!!\n");
                 return produtos;
             }
             return null;
